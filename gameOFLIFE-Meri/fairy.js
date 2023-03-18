@@ -1,3 +1,4 @@
+let LivingCreature = require("./LivingCreature")
 class Fairy {
     constructor(x, y) {
         this.x = x;

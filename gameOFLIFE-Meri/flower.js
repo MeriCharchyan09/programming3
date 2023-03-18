@@ -1,3 +1,4 @@
+let LivingCreature = require("./LivingCreature")
 class Flower {
     constructor(x, y) {
         this.x = x;
