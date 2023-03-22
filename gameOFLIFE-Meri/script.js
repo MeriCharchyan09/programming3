@@ -1,4 +1,4 @@
-function matrixGenerator(matrixSize,grass,grassEater,predator,fairy, flower) {
+function matrixGenerator(matrixSize,grass,grassEater,predator,fairy, flower, girl) {
     var matrix = []
 
     for (let i = 0; i < matrixSize; i++) {
@@ -58,6 +58,14 @@ function matrixGenerator(matrixSize,grass,grassEater,predator,fairy, flower) {
         matrix[y][x] = 5
 
     }
+    for (let i = 0; i < girl; i++) {
+        
+        var x = Math.floor(Math.random() * matrixSize)
+        var y = Math.floor(Math.random() * matrixSize)
+
+        matrix[y][x] = 6
+
+    }
 
     return matrix
 }
@@ -71,6 +79,7 @@ var grassEaterArr = []
 var predatorArr = [] 
 var fairyArr = []
 var flowerArr = []
+var girlarr = []
 
 
 function setup() {
@@ -95,6 +104,9 @@ function setup() {
             }else if(matrix[y][x] == 5){
                 var flower = new Flower(x,y)
                 flowerArr.push(flower)
+            }else if(matrix[y][x] == 6){
+                var girl = new Girl(x,y)
+                girlArr.push(girl)
             }
            }
         }
@@ -111,15 +123,16 @@ function draw() {
                 if(matrix[y][x] == 1){
                      fill ("green")
                 }else if (matrix[y][x] == 2){
-                        fill ("yellow")
+                         fill ("yellow")
                 }else if(matrix[y][x] == 3){
-                            fill ("red")
+                             fill ("red")
                 }else if(matrix[y][x] == 4){
-                               fill("white")
+                                 fill("light blue")
                 }else if(matrix[y][x] == 5){
-                                    fill("purple")
-                }
-                else{
+                                     fill("purple")
+                }else if(matrix[y][x] == 6){
+                                         fill("white")
+                }else{
                     fill ("gray")
                 }
                 rect (x * side , y * side ,side,side)
@@ -147,4 +160,7 @@ function draw() {
      for(let i in flowerArr){
          flowerArr[i].eat()
      }
+     for(let i in girlArr){
+        girlArr[i].eat()
+    }
 }

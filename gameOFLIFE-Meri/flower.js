@@ -1,5 +1,5 @@
 let LivingCreature = require("./LivingCreature")
-class Flower {
+module.exports = class Flower extends LivingCreature{
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -18,25 +18,11 @@ class Flower {
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(char) {
+    chooseCell(char,char1) {
         this.getNewCoordinates();
-        let found = [];
-
-        for (let i in this.directions) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-
-            if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
-                if (matrix[y][x] == char) {
-                    found.push(this.directions[i]);
-                }
-            }
-
-            
-        }
-
-        return found;
+        return super.chooseCell(char);
     }
+  
     //բազմանալ
     mul() {
         let emptyCell = this.chooseCell(0);

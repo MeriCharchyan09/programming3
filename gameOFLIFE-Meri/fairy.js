@@ -1,5 +1,5 @@
 let LivingCreature = require("./LivingCreature")
-class Fairy {
+module.exports = class Fairy extends LivingCreature {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -19,25 +19,7 @@ class Fairy {
         ];
     }            
 
-chooseCell(char) {
-    this.getNewCoordinates();
-    let found = [];
 
-    for (let i in this.directions) {
-        let x = this.directions[i][0];
-        let y = this.directions[i][1];
-
-        if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
-            if (matrix[y][x] == char) {
-                found.push(this.directions[i]);
-            }
-        }
-
-        
-    }
-
-    return found;
-}
 //բազմանալ
 mul() {
     let emptyCell = this.chooseCell(0);
@@ -54,6 +36,12 @@ console.log(newCell);
         this.energy = 10;
     }
 }
+
+chooseCell(char,char1) {
+    this.getNewCoordinates();
+    return super.chooseCell(char);
+}
+
 //ուտել
 eat() {
     let emptyCell = this.chooseCell(3);

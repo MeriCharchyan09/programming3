@@ -1,5 +1,5 @@
 let LivingCreature = require("./LivingCreature")
-class GrassEater {
+module.exports = class GrassEater extends LivingCreature {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -18,12 +18,11 @@ class GrassEater {
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(char) {
+    chooseCell(char,char1) {
         this.getNewCoordinates();
-        
-
-        return super;
+        return super.chooseCell(char);
     }
+  
     //բազմանալ
     mul() {
         let emptyCell = this.chooseCell(0);
