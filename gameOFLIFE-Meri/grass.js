@@ -1,41 +1,26 @@
 let LivingCreature = require("./LivingCreature")
 module.exports = class Grass extends LivingCreature {
-    constructor(x,y){
-                  this.x = x;
-                  this.y = y; 
-                  this.multiply = 0;
-                  this.directions = [
-                      [this.x - 1, this.y - 1],
-                      [this.x    , this.y - 1],
-                      [this.x + 1, this.y - 1],
-                      [this.x - 1, this.y    ],
-                      [this.x + 1, this.y    ],
-                      [this.x - 1, this.y + 1],
-                      [this.x    , this.y + 1],
-                      [this.x + 1, this.y + 1]
-                  ];
-              
-    }
-  
 
-    mul(){
+
+
+    mul() {
         this.multiply++
-        let emptyCell  = this.chooseCell(0)
-        let newCell = random(emptyCell)
+        let emptyCell = this.chooseCell(0)
+        let newCell = emptyCell[Math.floor(Math.random*emptyCell.lenght)]
+      
+        if (this.multiply >= 8 && newCell) {
+            var newX = newCell[0]
+            var newY = newCell[1]
 
-            if(this.multiply >= 8 && newCell){
-                          var newX = newCell[0]
-                          var newY = newCell[1]
+            matrix[newY][newX] = 1
 
-                          matrix[newY][newX] = 1
+            var gr = new Grass(newX, newY)
 
-                          var gr = new Grass(newX,newY)
+            grassArr.push(gr)
 
-                          grassArr.push(gr)
+            this.multiply = 0
 
-                          this.multiply = 0
-                          
 
-            }
+        }
     }
 }

@@ -1,8 +1,7 @@
 let LivingCreature = require("./LivingCreature")
 module.exports = class Flower extends LivingCreature{
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+       super(x,y)
         this.energy = 8;
         this.directions = [];
     }
@@ -26,8 +25,8 @@ module.exports = class Flower extends LivingCreature{
     //բազմանալ
     mul() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
-   console.log(newCell);
+        let newCell = emptyCell[Math.floor(Math.random*emptyCell.lenght)]
+   
         if (newCell && this.energy > 10) {
             let newX = newCell[0];
             let newY = newCell[1];
@@ -44,8 +43,7 @@ module.exports = class Flower extends LivingCreature{
 //ուտել
     eat() {
         let emptyCell = this.chooseCell(1);
-        let newCell = random(emptyCell)
-
+        let newCell = emptyCell[Math.floor(Math.random*emptyCell.lenght)]
         if (newCell) {
             this.energy += 5;
             let newX = newCell[0];
@@ -79,8 +77,7 @@ module.exports = class Flower extends LivingCreature{
     //քայլել
     move() {
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell)
-
+        let newCell = emptyCell[Math.floor(Math.random*emptyCell.lenght)]
         if (newCell) {
             let newX = newCell[0];
             let newY = newCell[1];

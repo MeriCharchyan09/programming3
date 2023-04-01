@@ -1,8 +1,7 @@
 let LivingCreature = require("./LivingCreature")
 module.exports = class Fairy extends LivingCreature {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+  super(x,y)
         this.energy = 10;
         this.directions = [];
     }
@@ -23,8 +22,8 @@ module.exports = class Fairy extends LivingCreature {
 //բազմանալ
 mul() {
     let emptyCell = this.chooseCell(0);
-    let newCell = random(emptyCell)
-console.log(newCell);
+    let newCell = emptyCell[Math.floor(Math.random*emptyCell.lenght)]
+
     if (newCell && this.energy > 15) {
         let newX = newCell[0];
         let newY = newCell[1];
@@ -45,7 +44,7 @@ chooseCell(char,char1) {
 //ուտել
 eat() {
     let emptyCell = this.chooseCell(3);
-    let newCell = random(emptyCell)
+    let newCell = emptyCell[Math.floor(Math.random*emptyCell.lenght)]
 
     if (newCell) {
         this.energy += 5;
@@ -80,7 +79,7 @@ eat() {
 //քայլել
 move() {
     let emptyCell = this.chooseCell(0);
-    let newCell = random(emptyCell)
+    let newCell = emptyCell[Math.floor(Math.random*emptyCell.lenght)]
 
     if (newCell) {
         let newX = newCell[0];
